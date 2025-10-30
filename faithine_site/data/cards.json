@@ -3,47 +3,37 @@
     {
       "id": "LUFFY045",
       "character": "Monkey D. Luffy",
+      "age": 19,
+      "origin": "East Blue (Île de Dawn)",
+      "crew": "Équipage du Chapeau de Paille",
+      "abilities": [
+        "Fruit du Gum-Gum (Gomu Gomu no Mi)",
+        "Haki du Roi (Haoshoku)",
+        "Haki de l’Observation (Kenbunshoku)",
+        "Haki de l’Armement (Busoshoku)"
+      ],
       "number": "N° 045 / 500",
       "series": "One Piece 2025",
       "edition_year": 2025,
-      "status": "Authentic",
-      "image_url": "https://placehold.co/640x900/png?text=Monkey+D.+Luffy+Card"
+      "status": "Authentique",
+      "image_url": "https://byfaithine.netlify.app/assets/luffy.png"
     },
     {
-      "id": "ZORO021",
+      "id": "ZORO046",
       "character": "Roronoa Zoro",
-      "number": "N° 021 / 500",
+      "age": 21,
+      "origin": "Village de Shimotsuki",
+      "crew": "Équipage du Chapeau de Paille",
+      "abilities": [
+        "Santoryu (Style à trois sabres)",
+        "Haki de l’Armement",
+        "Haki de l’Observation"
+      ],
+      "number": "N° 046 / 500",
       "series": "One Piece 2025",
       "edition_year": 2025,
-      "status": "Authentic",
-      "image_url": "https://placehold.co/640x900/png?text=Roronoa+Zoro+Card"
-    },
-    {
-      "id": "NAMI018",
-      "character": "Nami",
-      "number": "N° 018 / 500",
-      "series": "One Piece 2025",
-      "edition_year": 2025,
-      "status": "Authentic",
-      "image_url": "https://placehold.co/640x900/png?text=Nami+Card"
-    },
-    {
-      "id": "SANJI021",
-      "character": "Sanji",
-      "number": "N° 021 / 500",
-      "series": "One Piece 2025",
-      "edition_year": 2025,
-      "status": "Authentic",
-      "image_url": "https://placehold.co/640x900/png?text=Sanji+Card"
-    },
-    {
-      "id": "CHOPPER017",
-      "character": "Tony Tony Chopper",
-      "number": "N° 017 / 500",
-      "series": "One Piece 2025",
-      "edition_year": 2025,
-      "status": "Authentic",
-      "image_url": "https://placehold.co/640x900/png?text=Chopper+Card"
+      "status": "Authentique",
+      "image_url": "https://byfaithine.netlify.app/assets/zoro.png"
     }
   ]
 }
