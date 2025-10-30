@@ -1,0 +1,14 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#FFE9A3"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <path d="M20 60 Q28 20 62 20 h20 v10 H70 q-14 0-18 18v12H20z"/>
+    <text x="88" y="56" font-family="Playfair Display, Georgia, serif" font-size="42" font-weight="700" letter-spacing="1" fill="url(#g)">Faithine</text>
+  </g>
+  <circle cx="300" cy="20" r="6" fill="url(#g)"/>
+</svg>

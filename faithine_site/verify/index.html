@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vérification — Faithine Authentic</title>
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="logo" href="/">
+        <img src="/assets/logo-faithine.svg" alt="by Faithine logo" height="36"/>
+        <span class="badge">VERIFY</span>
+      </a>
+    </header>
+
+    <div id="box" class="card">
+      <h1>Vérification de carte</h1>
+      <p>Chargement…</p>
+    </div>
+
+    <p class="footer">© 2025 by Faithine — Authentic Edition.</p>
+  </div>
+
+  <script>
+    function getParam(name){
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    function escapeHTML(str){return (str||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));}
+
+    async function main(){
+      const id = getParam('id');
+      const box = document.getElementById('box');
+      const res = await fetch('/data/cards.json');
+      const data = await res.json();
+      const card = data.cards.find(c => c.id.toLowerCase() === String(id||'').toLowerCase());
+      if(!card){
+        box.innerHTML = '<h1>Carte introuvable</h1><div class="warning">ID invalide ou non enregistré. Vérifiez le QR et réessayez.</div>';
+        return;
+      }
+      const currentUrl = window.location.origin + '/verify/?id=' + encodeURIComponent(card.id);
+      box.innerHTML = `
+        <h1>${escapeHTML(card.character)} — ${escapeHTML(card.number)}</h1>
+        <div class="ok">✅ Authentic Edition verified by <strong>Faithine</strong></div>
+        <div class="info" style="margin-top:12px">
+          <div>ID: ${escapeHTML(card.id)}</div>
+          <div>Série: ${escapeHTML(card.series)}</div>
+          <div>Statut: ${escapeHTML(card.status)}</div>
+          <div>Année: ${escapeHTML(String(card.edition_year))}</div>
+        </div>
+        <hr/>
+        <div class="grid">
+          <div class="item">
+            <img src="${card.image_url}" alt="${escapeHTML(card.character)}" onerror="this.src='https://via.placeholder.com/640x900?text=${encodeURIComponent(card.character)}'">
+            <div class="meta">
+              <p>Visuel officiel de la carte.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img id="qr" alt="QR code" />
+            <div class="meta">
+              <p>Ce QR doit correspondre à l’autocollant holographique.</p>
+              <p><a href="${currentUrl}">${currentUrl}</a></p>
+            </div>
+          </div>
+        </div>
+      `;
+      // Generate QR without external libs using a simple API endpoint (only when online)
+      const qrImg = document.getElementById('qr');
+      const qrsrc = 'https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=' + encodeURIComponent(currentUrl);
+      qrImg.src = qrsrc;
+    }
+    main();
+  </script>
+</body>
+</html>

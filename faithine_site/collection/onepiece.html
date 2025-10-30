@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collection One Piece — Faithine Authentic</title>
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="logo" href="/">
+        <img src="/assets/logo-faithine.svg" alt="by Faithine logo" height="36"/>
+        <span class="badge">ONE PIECE — 2025</span>
+      </a>
+    </header>
+
+    <div class="card">
+      <h1>Collection One Piece</h1>
+      <p>Cartes collector premium avec certificat d’authenticité vérifiable en ligne.</p>
+      <div id="grid" class="grid"></div>
+    </div>
+
+    <p class="footer">© 2025 by Faithine — Authentic Edition.</p>
+  </div>
+
+  <script>
+  async function main(){
+    const res = await fetch('/data/cards.json');
+    const data = await res.json();
+    const list = data.cards.filter(c => c.series === 'One Piece 2025');
+    const grid = document.getElementById('grid');
+    list.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.innerHTML = `
+        <img src="${c.image_url}" alt="${c.character} #${c.number}" onerror="this.src='https://via.placeholder.com/640x900?text=${encodeURIComponent(c.character)}'">
+        <div class="meta">
+          <h2>${c.character} — ${c.number}</h2>
+          <p>ID: ${c.id} • Statut: ${c.status}</p>
+          <a class="btn" href="/verify/?id=${c.id}">Vérifier</a>
+        </div>`;
+      grid.appendChild(el);
+    });
+  }
+  main();
+  </script>
+</body>
+</html>
